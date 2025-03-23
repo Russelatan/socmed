@@ -3,6 +3,7 @@
   $host = "localhost";
   $username = "root";
   $password = "";
+  $key = "secret";
 
   $charset = "utf8mb4";
 
@@ -13,9 +14,12 @@
 
   $createdb = "create database if not exists socmed";
   $createtable = "create table if not exists users (id int not null primary key auto_increment, 
-                                                    name varbinary(255), birthdate varbinary(255), 
-                                                    email varbinary(255), username varchar(50), 
-                                                    password varchar(255), created_at datetime DEFAULT CURRENT_TIMESTAMP, 
+                                                    name varbinary(255), 
+                                                    birthdate varbinary(255), 
+                                                    email varbinary(255), 
+                                                    username varchar(50), 
+                                                    password varchar(255), 
+                                                    created_at datetime DEFAULT CURRENT_TIMESTAMP, 
                                                     updated_at datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP)";
   $pdo->exec($createdb);
   $pdo->exec("use socmed");

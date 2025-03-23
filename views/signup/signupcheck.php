@@ -13,8 +13,7 @@
     $confirmpass = $_POST["confirmpassword"];
     
 
-    $check_user_exist = select_query($pdo, "username", "users", "where username = :username OR email = AES_ENCRYPT(:email, 'secret')", [":username" => $username,
-                                                                                                                                                                                    ":email" => $email]);
+    
 
     if (!$check_user_exist){
       if ($password === $confirmpass){
