@@ -49,6 +49,7 @@
     <div class="container">
       <input type="submit" value="Create Account" class="submitinput">
     </div>
+
   </form>
   <script src="../../javascript/login_signup/login_signup.js"></script>
 </body>

@@ -1,7 +1,7 @@
 <?php
 
+  require "db/db.php";
   require "controllers/user_controller.php";
-  require "model/user.php";
   session_start();
 
   $name = $_POST["name"];
@@ -14,11 +14,12 @@
 
   $controller = new UserController($pdo, $key);
 
-
   if($_SERVER["REQUEST_METHOD"] === "POST"){
 
     if($_POST["action"] === "register"){
-
+      
+      echo $controller->registerUser($name, $birthdate, $email, $username, $password, $confirmpass);
+        
     }
   }
 

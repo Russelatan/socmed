@@ -1,7 +1,5 @@
 <?php
 
-  require "../db/db.php";
-
   class User {
 
     private $pdo;
@@ -28,8 +26,11 @@
                                         ":birthdate" => $birthdate,
                                         ":email" => $email,
                                         ":username" => $username,
-                                        ":password" => $password,
+                                        ":password" => $hashed,
                                         ":key" => $key]);
+
+      return json_encode(["status" => "success",
+                                "message" => "Account created successfully"]);
       
     }
 
