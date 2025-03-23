@@ -7,6 +7,7 @@
 </head>
 <body>
     <h1>Login Area</h1>
+    <!-- <img src="../../RIC.png" alt=""> -->
     <form action="" class="login" method="POST">
 
         <input type="text" class="input" placeholder="Enter Username or Email" name="" required>
