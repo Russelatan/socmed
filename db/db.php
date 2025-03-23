@@ -14,6 +14,7 @@
 
   $createdb = "create database if not exists socmed";
   $createtable = "create table if not exists users (id int not null primary key auto_increment, 
+                                                    profile_image varbinary(255),
                                                     fname varbinary(255),
                                                     lname varbinary(255),  
                                                     birthdate varbinary(255), 
@@ -30,7 +31,6 @@
     $query = "select $parameter from $table $condition";
     $stmt = $pdo->prepare($query);
     $stmt->execute($condition_input);
-
     $result = $stmt->fetch(PDO::FETCH_ASSOC);
     return $result;
   }
@@ -45,19 +45,27 @@
   }
 
 
-  $create_admin = select_query($pdo, "username", "users", 'where username = :username', [":username" => "admin"] );
-  $password = password_hash("admin", PASSWORD_DEFAULT);
+  // $create_admin = select_query($pdo, "username", "users", 'where username = :username', [":username" => "admin"] );
+  // $password = password_hash("admin", PASSWORD_DEFAULT);
   
-  if (!$create_admin){
-    insert_query($pdo, "users", "fname, lname, birthdate, email, username, password", "AES_ENCRYPT(:fname, 'secret'), AES_ENCRYPT(:lname, 'secret'), AES_ENCRYPT(:birthdate, 'secret'), AES_ENCRYPT(:email, 'secret'), :username, :password",
-                                                                                                                                                                                                                                    [":fname" => 'admin',
-                                                                                                                                                                                                                                                  ":lname" => 'admin',
-                                                                                                                                                                                                                                                  ":birthdate" => "2025-12-12",
-                                                                                                                                                                                                                                                  ":email" => "admin@gmail.com",
-                                                                                                                                                                                                                                                  ":username" => "admin",
-                                                                                                                                                                                                                                                  ":password" => $password]);
+  // if (!$create_admin){
+  //   insert_query($pdo, 
+  //                 "users", 
+  //                 "fname, lname, birthdate, email, username, password", 
+  //                 "AES_ENCRYPT(:fname, 'secret'), 
+  //                                     AES_ENCRYPT(:lname, 'secret'), 
+  //                                     AES_ENCRYPT(:birthdate, 'secret'), 
+  //                                     AES_ENCRYPT(:email, 'secret'), 
+  //                                     :username, 
+  //                                     :password",
+  //                 [":fname" => 'admin',
+  //                               ":lname" => 'admin',
+  //                               ":birthdate" => "2025-12-12",
+  //                               ":email" => "admin@gmail.com",
+  //                               ":username" => "admin",
+  //                               ":password" => $password]);
                                                                                                             
-  }
+  // }
 
   
 
