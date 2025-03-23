@@ -4,9 +4,6 @@
 
     private $pdo;
     private $key;
-
-
-
     public function __construct($pdo, $key){
 
       $this->pdo = $pdo;
@@ -17,12 +14,13 @@
     public function register($fname, $lname, $birthdate, $email, $username, $password){
       $pdo = $this->pdo;
       $key = $this->key;
-      $hashed = password_hash($password, PASSWORD_DEFAULT);
+      $hashed = password_hash($password, PASSWORD_DEFAULT); 
 
       insert_query($pdo, "users", 
-                          "fname, lname, birthdate, email, username, password",
-                        "AES_ENCRYPT(:fname, :key), AES_ENCRYPT(:lname, :key), AES_ENCRYPT(:birthdate, :key), AES_ENCRYPT(:email, :key), :username, :password",
-                        [":fname" => $fname,
+                          "profile_image, fname, lname, birthdate, email, username, password",
+                        "AES_ENCRYPT(:profile_image, :key), AES_ENCRYPT(:fname, :key), AES_ENCRYPT(:lname, :key), AES_ENCRYPT(:birthdate, :key), AES_ENCRYPT(:email, :key), :username, :password",
+                        [":profile_image" => "assets/default.webp",
+                                        ":fname" => $fname,
                                         ":lname" => $lname,
                                         ":birthdate" => $birthdate,
                                         ":email" => $email,
