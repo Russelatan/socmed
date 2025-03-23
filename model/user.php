@@ -4,9 +4,6 @@
 
     private $pdo;
     private $key;
-
-
-
     public function __construct($pdo, $key){
 
       $this->pdo = $pdo;

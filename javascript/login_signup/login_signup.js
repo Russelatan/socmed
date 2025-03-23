@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const data = await response.json();
 
-    if (data.success){
+    if (data.status === "success"){
       console.log(data.status, data.message);
     }
     else{
