@@ -30,6 +30,7 @@
     <input type="text" name="username" class="username" required placeholder="Username" autocomplete="username">
     <input type="password" name="password" class="password" required placeholder="Password">
     <input type="password" name="confirmpassword" class="password" required placeholder="Confirm password">
+    <input type="hidden" name="action" value="register">
     <input type="submit" value="Create Account">
   </form>
   <script src="../../javascript/login_signup/login_signup.js"></script>

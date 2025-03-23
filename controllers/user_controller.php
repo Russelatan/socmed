@@ -1,7 +1,5 @@
 <?php
-
-require "../db/db.php";
-require "../model/user.php";
+require "model/user.php";
 
 class UserController {
 
@@ -16,11 +14,6 @@ class UserController {
 
   public function registerUser($name, $birthdate, $email, $username, $password, $confirmpass){
     
-
-    // if (empty($name) || empty($birthdate) || empty($email) || empty($username) || empty($password) || empty($confirmpass)){
-
-    // }
-
     $check_user_exist = select_query($this->pdo, 
                                 "username", 
                                 "users", 
@@ -28,12 +21,17 @@ class UserController {
                                 [":username" => $username,
                                                   ":email" => $email]);
 
+    if (!$check_user_exist){
+      return json_encode(["status" => "error",
+                                  "message" => "Username or Email already been used!"]);
+    }                                         
+
     if (!$password === $confirmpass){
       return json_encode(["status" => "error",
                                   "message" => "Password and Confirm password doesn't match!"]);
     }
 
-    $this->user_model->register($name, $birthdate, $email, $username, $password);
+    return $this->user_model->register($name, $birthdate, $email, $username, $password);
   }
 }
 
