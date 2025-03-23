@@ -21,7 +21,7 @@ class UserController {
                                 [":username" => $username,
                                                   ":email" => $email]);
 
-    if (!$check_user_exist){
+    if ($check_user_exist){
       return json_encode(["status" => "error",
                                   "message" => "Username or Email already been used!"]);
     }                                         

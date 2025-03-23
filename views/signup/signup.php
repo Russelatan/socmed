@@ -9,6 +9,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <link rel="stylesheet" href="../../assets/signup.css">
+  <link rel="stylesheet" href="../../assets/styles.css">
+
 </head>
 <body>
   <form action="" class="signup-form">
@@ -36,9 +38,11 @@
     <div class="container">
       <input type="submit" value="Create Account" class="submitinput">
     </div>
->>>>>>>>> Temporary merge branch 2
+
   </form>
   <script src="../../javascript/login_signup/login_signup.js"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
 </body>
   
 </html>
