@@ -48,26 +48,22 @@
       }
       else{
         try{
-          echo json_encode(["status" => "error",
-                                 "message" => "Password and Confirm password does not match."]);
+          echo json_encode(["status" => "error", "message" => "Password and Confirm password does not match."]);
           exit;
         }
         catch(Exception $e){
-          echo json_encode(["status" => "error",
-                                   "message" => $e]);
+          echo json_encode(["status" => "error", "message" => $e]);
           exit;
         }
       }
     }
     else{
         try{
-          echo json_encode(["status" => "error",
-                                 "message" => "Username or Email already used."]);
+          echo json_encode(["status" => "error", "message" => "Username or Email already used."]);
           exit;
         }
         catch(Exception $e){
-          echo json_encode(["status" => "error",
-                                   "message" => $e]);
+          echo json_encode(["status" => "error", "message" => $e]);
           exit;
         }
     }
