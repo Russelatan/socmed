@@ -7,7 +7,7 @@
 </head>
 <body>
     <h1>Login Area</h1>
-    <form action="" class="login" method="POST">
+    <form action="" class="loginForm">
 
         <input type="text" placeholder="Enter Username or Email">
         <input type="password" placeholder="Password">
@@ -20,4 +20,5 @@
     </form>
 
 </body>
+<script src="../../javascript/login_signup/login_signup.js"></script>
 </html>

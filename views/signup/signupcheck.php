@@ -11,9 +11,6 @@
     $username = $_POST["username"];
     $password = $_POST["password"];
     $confirmpass = $_POST["confirmpassword"];
-    
-
-    
 
     if (!$check_user_exist){
       if ($password === $confirmpass){

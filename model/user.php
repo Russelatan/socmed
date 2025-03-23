@@ -33,6 +33,32 @@
       
     }
 
+    public function getUser($username, $password){
+      $pdo = $this->pdo;
+      $key = $this->key;
+      $check_user_exist = select_query($pdo, 
+                                "AES_DECRYPT(profile_image, :key), AES_DECRYPT(fname, :key), AES_DECRYPT(lname, :key), AES_DECRYPT(email, :key), password", 
+                                "users", 
+                                "where username = :username OR email = AES_ENCRYPT(:email, 'secret')", 
+                                [":username" => $username,
+                                                  ":email" => $username,
+                                                  ":key" => $key]);
+
+      if (!$check_user_exist){
+        return json_encode(["status" => "error",
+                                    "message" => "Invalid Username or Password!"]);
+      }
+
+      if ($check_user_exist && !password_verify($password, $check_user_exist["password"])){
+        $_SESSION["user"] = $check_user_exist;
+        return json_encode(["status" => "error",
+                                    "message" => "Invalid Username or Password!"]);
+      }
+      $user = $check_user_exist;
+      $_SESSION["user"] = $user;
+      return json_encode(["status" => "success"]);
+    }
+
   }
 
 

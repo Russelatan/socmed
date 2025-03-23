@@ -39,6 +39,10 @@
       <input type="submit" value="Create Account" class="submitinput">
     </div>
 
+    <div class="container">
+      <a href="../login/login.php">Login</a>
+    </div>
+
   </form>
   <script src="../../javascript/login_signup/login_signup.js"></script>
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>

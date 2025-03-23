@@ -24,6 +24,13 @@
       echo $controller->registerUser($fname, $lname, $birthdate, $email, $username, $password, $confirmpass);
         
     }
+
+    if($_POST["action"] === "login"){
+      $username = $_POST["username"];
+      $password = $_POST["password"];
+      echo $controller->registerUser($fname, $lname, $birthdate, $email, $username, $password, $confirmpass);
+        
+    }
   }
 
 ?>
