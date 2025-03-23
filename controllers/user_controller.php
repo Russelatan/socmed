@@ -12,7 +12,7 @@ class UserController {
     $this->user_model = new User($this->pdo, $key);
   }
 
-  public function registerUser($name, $birthdate, $email, $username, $password, $confirmpass){
+  public function registerUser($fname, $lname, $birthdate, $email, $username, $password, $confirmpass){
     
     $check_user_exist = select_query($this->pdo, 
                                 "username", 
@@ -31,7 +31,7 @@ class UserController {
                                   "message" => "Password and Confirm password doesn't match!"]);
     }
 
-    return $this->user_model->register($name, $birthdate, $email, $username, $password);
+    return $this->user_model->register($fname, $lname, $birthdate, $email, $username, $password);
   }
 }
 

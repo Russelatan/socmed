@@ -14,7 +14,8 @@
 
   $createdb = "create database if not exists socmed";
   $createtable = "create table if not exists users (id int not null primary key auto_increment, 
-                                                    name varbinary(255), 
+                                                    fname varbinary(255),
+                                                    lname varbinary(255),  
                                                     birthdate varbinary(255), 
                                                     email varbinary(255), 
                                                     username varchar(50), 
@@ -48,7 +49,9 @@
   $password = password_hash("admin", PASSWORD_DEFAULT);
   
   if (!$create_admin){
-    insert_query($pdo, "users", "name, birthdate, email, username, password", "AES_ENCRYPT(:name, 'secret'), AES_ENCRYPT(:birthdate, 'secret'), AES_ENCRYPT(:email, 'secret'), :username, :password", [":name" => 'admin',
+    insert_query($pdo, "users", "fname, lname, birthdate, email, username, password", "AES_ENCRYPT(:fname, 'secret'), AES_ENCRYPT(:lname, 'secret'), AES_ENCRYPT(:birthdate, 'secret'), AES_ENCRYPT(:email, 'secret'), :username, :password",
+                                                                                                                                                                                                                                    [":fname" => 'admin',
+                                                                                                                                                                                                                                                  ":lname" => 'admin',
                                                                                                                                                                                                                                                   ":birthdate" => "2025-12-12",
                                                                                                                                                                                                                                                   ":email" => "admin@gmail.com",
                                                                                                                                                                                                                                                   ":username" => "admin",

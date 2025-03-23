@@ -4,7 +4,8 @@
   require "controllers/user_controller.php";
   session_start();
 
-  $name = $_POST["name"];
+  $fname = $_POST["fname"];
+  $lname = $_POST["lname"];
   $email = $_POST["email"];
   $birthdate = $_POST["birthdate"];
   $birthdate = date("Y-m-d",strtotime(str_replace("/","-", $birthdate)));
@@ -18,7 +19,7 @@
 
     if($_POST["action"] === "register"){
       
-      echo $controller->registerUser($name, $birthdate, $email, $username, $password, $confirmpass);
+      echo $controller->registerUser($fname, $lname, $birthdate, $email, $username, $password, $confirmpass);
         
     }
   }
