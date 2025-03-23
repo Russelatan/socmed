@@ -14,15 +14,16 @@
 
     }
 
-    public function register($name, $birthdate, $email, $username, $password){
+    public function register($fname, $lname, $birthdate, $email, $username, $password){
       $pdo = $this->pdo;
       $key = $this->key;
       $hashed = password_hash($password, PASSWORD_DEFAULT);
 
       insert_query($pdo, "users", 
-                          "name, birthdate, email, username, password",
-                        "AES_ENCRYPT(:name, :key), AES_ENCRYPT(:birthdate, :key), AES_ENCRYPT(:email, :key), :username, :password",
-                        [":name" => $name,
+                          "fname, lname, birthdate, email, username, password",
+                        "AES_ENCRYPT(:fname, :key), AES_ENCRYPT(:lname, :key), AES_ENCRYPT(:birthdate, :key), AES_ENCRYPT(:email, :key), :username, :password",
+                        [":fname" => $fname,
+                                        ":lname" => $lname,
                                         ":birthdate" => $birthdate,
                                         ":email" => $email,
                                         ":username" => $username,
