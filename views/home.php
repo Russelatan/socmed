@@ -7,7 +7,7 @@
     exit;
   }
 
-  echo $_SESSION["user"]["id"];
+  // echo $_SESSION["user"]["id"];
 
 ?>
 <!DOCTYPE html>
