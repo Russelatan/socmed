@@ -22,101 +22,12 @@ body {
 		#9dd0e0
 	);
 	display: flex;
-	justify-content: center;
-	align-items: center;
-}
-form {
-	height: 500px;
-	width: 400px;
-	border: 1px solid rgb(247, 237, 237);
-	display: flex;
 	flex-direction: column;
-	background-color: rgb(27, 25, 25);
-	border-radius: 10px;
-	padding: 10px;
 }
-
-.input {
-	width: 300px;
-	height: 45px;
-	border: none;
-	outline: none;
-	padding: 0px 7px;
-	border-radius: 20px;
-	color: #fff;
-	font-size: 15px;
-	background-color: transparent;
-	box-shadow: 3px 3px 10px rgba(0, 0, 0, 1),
-		-1px -1px 6px rgba(255, 255, 255, 0.4);
-}
-
-.input:focus {
-	border: 2px solid transparent;
-	color: #fff;
-	box-shadow: 3px 3px 10px rgba(0, 0, 0, 1),
-		-1px -1px 6px rgba(255, 255, 255, 0.4), inset 3px 3px 10px rgba(0, 0, 0, 1),
-		inset -1px -1px 6px rgba(255, 255, 255, 0.4);
-}
-.container {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	height: 100px;
-}
-.container .input:valid ~ .label,
-.container .input:focus ~ .label {
-	transition: 0.3s;
-	padding-left: 2px;
-	transform: translateY(-35px);
-}
-
-.container .input:valid,
-.container .input:focus {
-	box-shadow: 3px 3px 10px rgba(0, 0, 0, 1),
-		-1px -1px 6px rgba(255, 255, 255, 0.4), inset 3px 3px 10px rgba(0, 0, 0, 1),
-		inset -1px -1px 6px rgba(255, 255, 255, 0.4);
-}
-.submitinput {
-	background-image: linear-gradient(
-		to right top,
-		#c0debd,
-		#cbd4af,
-		#d3c9a7,
-		#d7bea5,
-		#d7b5a6,
-		#d9b2ae,
-		#d7b0b7,
-		#d0b0c1,
-		#c8b7d2,
-		#b9bfde,
-		#a9c8e3,
-		#9dd0e0
-	);
-	width: 200px;
-
-	height: 45px;
-	border: none;
-	outline: none;
-	padding: 0px 7px;
-	border-radius: 20px;
-	color: #000000;
-	font-size: 15px;
-}
-.submitinput:focus {
-	border: 2px solid transparent;
-	color: #fff;
-	box-shadow: 3px 3px 10px rgba(0, 0, 0, 1),
-		-1px -1px 6px rgba(255, 255, 255, 0.4), inset 3px 3px 10px rgba(0, 0, 0, 1),
-		inset -1px -1px 6px rgba(255, 255, 255, 0.4);
-}
-#fname {
-	width: 150px;
-}
-#lname {
-	width: 150px;
-}
-#Names {
-	gap: 10px;
+header {
+	height: 20px;
+	width: 100%;
+	border: 1px solid black;
 }
 .submit-postbtn {
 	height: 100px;
