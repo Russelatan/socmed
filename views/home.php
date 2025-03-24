@@ -7,8 +7,11 @@
     exit;
   }
 
+<<<<<<< HEAD
   // echo $_SESSION["user"]["id"];
 
+=======
+>>>>>>> b1e8b40929fda2a922142d934e70fd0709050684
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -37,8 +40,13 @@
           <input type="hidden" name="action" value="create_post">
           <input type="hidden" name="user_id" value=<?php echo $_SESSION["user"]["id"]?>>
           <input type="text" name="content" placeholder="Post something. . ." value="">
+<<<<<<< HEAD
           <input type="file" name="post_image[]" multiple>
           <input type="submit" value="Submit Post" class="submit-postbtn">
+=======
+          <input type="file" name="post_image[]" multiple value="">
+          <input type="submit" value="Submit Post">
+>>>>>>> b1e8b40929fda2a922142d934e70fd0709050684
         </form>
         <div class="main-newsfeed">
 
