@@ -118,3 +118,7 @@ form {
 #Names {
 	gap: 10px;
 }
+.submit-postbtn {
+	height: 100px;
+	background-color: green;
+}

@@ -38,7 +38,7 @@
           <input type="hidden" name="user_id" value=<?php echo $_SESSION["user"]["id"]?>>
           <input type="text" name="content" placeholder="Post something. . ." value="">
           <input type="file" name="post_image[]" multiple>
-          <input type="submit" value="Submit Post">
+          <input type="submit" value="Submit Post" class="submit-postbtn">
         </form>
         <div class="main-newsfeed">
 
