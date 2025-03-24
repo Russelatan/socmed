@@ -5,8 +5,6 @@ class UserController {
 
   private $user_model;
   private $pdo;
-
-
   public function __construct($pdo, $key){
     $this->pdo = $pdo;
     $this->user_model = new User($this->pdo, $key);
@@ -26,12 +24,18 @@ class UserController {
                                   "message" => "Username or Email already been used!"]);
     }                                         
 
-    if (!$password === $confirmpass){
+    if (!($password === $confirmpass)){
       return json_encode(["status" => "error",
                                   "message" => "Password and Confirm password doesn't match!"]);
     }
 
     return $this->user_model->register($fname, $lname, $birthdate, $email, $username, $password);
+  }
+
+
+  public function loginUser($username, $password){
+
+    return $this->user_model->getUser($username, $password);
   }
 }
 
