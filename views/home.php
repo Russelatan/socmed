@@ -7,53 +7,98 @@
     exit;
   }
 
-<<<<<<< HEAD
   // echo $_SESSION["user"]["id"];
 
-=======
->>>>>>> b1e8b40929fda2a922142d934e70fd0709050684
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="../assets/home.css">
+  <link rel="stylesheet" href="../assets/home.css?v=1.0.1">
   <title>Document</title>
 </head>
 <body>
   <header>
-    <section class="header-searchbar"></section>
-    <section class="header-nav"></section>
-    <section class="header-user-menu"></section>
-  </header>
-  <main>
-    <section class="main-menu">
+    <section class="header-searchbar">
+      <form action="">
+        <input type="text">
+        <input type="submit" value="Search">
+      </form>
+    </section>
+    <section class="header-nav">
+
+    </section>
+    <section class="header-main-menu">
       <form action="" class="logout-form">
         <input type="hidden" name="action" value="logout">
         <input type="submit" value="Log Out">
       </form>
     </section>
-    <section class="main-newsfeed">
-      <div class="main-newsfeed-create">
+  </header>
+  <main>
+      <aside class="aside-home main-content">
+        <div class="container-contact">
+          <img src="../assets/profile_pics/default.webp" alt="profile-img" class="contact-img">
+          <h1>Iquen Marba</h1>
+          <p>Active now</p>
+        </div>
+        <div class="container-contact">
+          <img src="../assets/profile_pics/default.webp" alt="profile-img" class="contact-img">
+          <h1>Iquen Marba</h1>
+          <p>Active now</p>
+        </div>
+
+      </aside>
+      <section class="main-newsfeed-create main-content">
         <form class="post-form" action="" enctype="multipart/form-data">
           <input type="hidden" name="action" value="create_post">
           <input type="hidden" name="user_id" value=<?php echo $_SESSION["user"]["id"]?>>
           <input type="text" name="content" placeholder="Post something. . ." value="">
-<<<<<<< HEAD
-          <input type="file" name="post_image[]" multiple>
-          <input type="submit" value="Submit Post" class="submit-postbtn">
-=======
           <input type="file" name="post_image[]" multiple value="">
           <input type="submit" value="Submit Post">
->>>>>>> b1e8b40929fda2a922142d934e70fd0709050684
         </form>
-        <div class="main-newsfeed">
-
+        <div class="post-newsfeed">
+          <div class="container-info-user">
+            <img src="../assets/profile_pics/default.webp" alt="postprofile" class="contact-img">
+            <h1>Iquen marba</h1>
+            <p>Tuesday 1:48am</p>
+          </div>
+          <div class="container-info-post">
+            <p class="caption-post">
+              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repellat iure optio nulla quod nostrum veniam soluta tempore, sed eveniet labore perspiciatis ex quas et, nobis sit quasi! Totam, commodi officiis?
+            </p>
+            <div class="container-image-post">
+              <img src="../assets/post_images/profile.jpg" alt="postimage" class="postimage">
+            </div>
+          </div>
         </div>
-      </div>
-    </section>
-    <section class="main-contacts"></section>
+
+
+
+                <div class="post-newsfeed">
+          <div class="container-info-user">
+            <img src="../assets/profile_pics/default.webp" alt="postprofile" class="contact-img">
+            <h1>Iquen marba</h1>
+            <p>Tuesday 1:48am</p>
+          </div>
+          <div class="container-info-post">
+            <p class="caption-post">
+              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repellat iure optio nulla quod nostrum veniam soluta tempore, sed eveniet labore perspiciatis ex quas et, nobis sit quasi! Totam, commodi officiis?
+            </p>
+            <div class="container-image-post">
+              <img src="../assets/post_images/profile.jpg" alt="postimage" class="postimage">
+            </div>
+          </div>
+        </div>
+      </section>
+      <aside class="contact-section main-content">
+      <div class="container-contact">
+          <img src="../assets/profile_pics/default.webp" alt="profile-img" class="contact-img">
+          <h1>Iquen Marba</h1>
+          <p>Active now</p>
+        </div>
+      </aside>
   </main>
 </body>
 <script src="../javascript/post/post.js"></script>
