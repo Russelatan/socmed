@@ -66,29 +66,5 @@
     }
   }
 
-  // $file = $_FILES["profile_image"];
-  // $target_dir = "assets/profile_pics/";
-      
-  // $target_file = $target_dir . time() . "_" . basename($file["name"]);
-  // $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
 
-  // // Check if the file is an image
-  // $check = getimagesize($file["tmp_name"]);
-  // if ($check === false) {
-  //   return json_encode(["status" => "error",
-  //                              "message" => "File is not an image."]);
-  // }
-
-  // // Allow only JPG, JPEG, PNG formats
-  // $allowed_types = ["jpg", "jpeg", "png"];
-  // if (!in_array($imageFileType, $allowed_types)) {
-  //     return json_encode(["status" => "error",
-  //                               "message" => "Only JPG, JPEG, and PNG files are allowed."]);
-  // }
-
-  // // Move the uploaded file to the "uploads" folder
-  // if (!move_uploaded_file($file["tmp_name"], $target_file)) {
-  //     return json_encode(["status" => "error",
-  //                               "message" => "Error uploading file."]);
-  // }
 ?>

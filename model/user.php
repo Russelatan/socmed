@@ -29,7 +29,7 @@
                                         ":key" => $key]);
 
       return json_encode(["status" => "success",
-                                "message" => "Account created successfully"]);
+                                 "message" => "Account created successfully"]);
       
     }
 
@@ -37,7 +37,7 @@
       $pdo = $this->pdo;
       $key = $this->key;
       $check_user_exist = select_query($pdo, 
-                                "AES_DECRYPT(profile_image, :key), AES_DECRYPT(fname, :key), AES_DECRYPT(lname, :key), AES_DECRYPT(email, :key), password", 
+                                "id, AES_DECRYPT(profile_image, :key), AES_DECRYPT(fname, :key), AES_DECRYPT(lname, :key), AES_DECRYPT(email, :key), password", 
                                 "users", 
                                 "where username = :username OR email = AES_ENCRYPT(:email, 'secret')", 
                                 [":username" => $username,
