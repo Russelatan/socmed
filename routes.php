@@ -29,7 +29,7 @@
       $username = $_POST["username"];
       $password = $_POST["password"];
       echo $controller->loginUser($username, $password);
-        
+      exit;
     }
 
     if($_POST["action"] === "logout"){  
@@ -43,11 +43,11 @@
     if($_POST["action"] === "create_post"){
 
       $post_controller = new PostController($pdo, $key);
-
+      $user_id = $_POST["user_id"];
       $content = $_POST["content"];
       $image = $_FILES["post_image"];
       $user = $_SESSION["user"];
-      echo $post_controller->create($content, $image, $user);
+      echo $post_controller->create($content, $image, $user_id);
     }
   }
 

@@ -7,6 +7,8 @@
     exit;
   }
 
+  echo $_SESSION["user"]["id"];
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -33,6 +35,7 @@
       <div class="main-newsfeed-create">
         <form class="post-form" action="" enctype="multipart/form-data">
           <input type="hidden" name="action" value="create_post">
+          <input type="hidden" name="user_id" value=<?php echo $_SESSION["user"]["id"]?>>
           <input type="text" name="content" placeholder="Post something. . ." value="">
           <input type="file" name="post_image[]" multiple>
           <input type="submit" value="Submit Post">

@@ -50,12 +50,12 @@
         }
     }
 
-    public function create($content, $image, $user){
+    public function create($content, $image, $user_id){
       
       $post_id = insert_query($this->pdo, "post", 
                                              "user_id, content", 
                                   ":user_id, AES_ENCRYPT(:content, :key)", 
-                                        [":user_id" => $user["id"],
+                                        [":user_id" => $user_id,
                                                        ":content" => $content,
                                                        ":key" => $this->key]);
       
