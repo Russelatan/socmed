@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
     e.preventDefault();
     const formdata = new FormData(postForm);
 
-    const response = await fetch("../../routes.php", {
+    const response = await fetch("../routes.php", {
       method: "POST",
       body: formdata,
     });
