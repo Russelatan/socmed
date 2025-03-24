@@ -45,7 +45,14 @@
       $post_controller = new PostController($pdo, $key);
       $user_id = $_POST["user_id"];
       $content = $_POST["content"];
-      $image = $_FILES["post_image"];
+
+      if(!isset($_FILES["post_image"]) || $_FILES["post_image"]["error"][0] == 4){
+        $image = null;
+      }
+      else{
+        $image = $_FILES["post_image"];
+      }
+      
       $user = $_SESSION["user"];
       echo $post_controller->create($content, $image, $user_id);
     }

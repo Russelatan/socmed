@@ -6,8 +6,6 @@
     exit;
   }
 
-  echo $_SESSION["user"]["id"];
-
 ?>
 <!DOCTYPE html>
 <html lang="en">

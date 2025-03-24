@@ -61,7 +61,7 @@
       
       
 
-      if (is_array($image)){
+      if (is_null($image)){
         return json_encode(["status" => "success",
                                    "message" => "Post uploaded successfully!"]);
       }
