@@ -10,9 +10,9 @@
       $this->post_model = new Post($pdo, $key);
     }
 
-    public function create($content, $image, $user){
+    public function create($content, $image, $user_id){
       
-      return $this->post_model->create($content, $image, $user);
+      return $this->post_model->create($content, $image, $user_id);
 
     }
   }

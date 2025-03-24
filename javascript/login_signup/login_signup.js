@@ -78,13 +78,16 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     }
 
-    logoutForm,addEventListener("submit", logout);
-    
-    try{
-      signupForm.addEventListener("submit", signup)
+    if (signupForm) {
+      signupForm.addEventListener("submit", signup);
     }
-    catch(e){
+
+    if (loginForm) {
       loginForm.addEventListener("submit", login);
-    }  
+    }
+
+    if (logoutForm) {
+      logoutForm.addEventListener("submit", logout);
+    }
   
 });

@@ -55,7 +55,9 @@
                                     "message" => "Invalid Username or Password!"]);
       }
       $user = $check_user_exist;
+      
       $_SESSION["user"] = $user;
+      
       return json_encode(["status" => "success"]);
     }
 

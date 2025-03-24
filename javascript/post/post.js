@@ -13,8 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const data = await response.json();
 
     if (data.status === "success") {
-      // alert("iquen");
-      // console.log("run");
+      
       swal({
         title: "Success!",
         text: data.message,
