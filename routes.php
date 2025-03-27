@@ -9,6 +9,7 @@
   if($_SERVER["REQUEST_METHOD"] === "POST"){
 
     $controller = new UserController($pdo, $key);
+    $post_controller = new PostController($pdo, $key);
 
     if($_POST["action"] === "register"){
 
@@ -42,7 +43,6 @@
 
     if($_POST["action"] === "create_post"){
 
-      $post_controller = new PostController($pdo, $key);
       $user_id = $_POST["user_id"];
       $content = $_POST["content"];
 
@@ -55,6 +55,14 @@
       
       $user = $_SESSION["user"];
       echo $post_controller->create($content, $image, $user_id);
+    }
+
+    if ($_POST["action"] === "read_post"){
+      $page = isset($_POST['page']) ? (int)$_POST["page"] : 1;
+      $last_id = $_POST["last_id"];
+      
+      echo $_POST["last_id"] != 0 ? $post_controller->getposts($last_id) : $post_controller->getrecentposts();
+      
     }
   }
 

@@ -72,6 +72,73 @@
                                  "message" => "Post uploaded successfully!"]);
       
     }
+
+    public function getposts($last_id){
+      $limit = 3;
+
+      $posts = select_query($this->pdo, "p.post_id, 
+                                                         p.user_id, 
+                                                         aes_decrypt(u.profile_image, 'secret') as profile_image, 
+                                                         aes_decrypt(u.fname, 'secret') as fname, 
+                                                         aes_decrypt(u.lname, 'secret') as lname, 
+                                                         aes_decrypt(p.content, 'secret') as content , 
+                                                         group_concat(aes_decrypt(pi.directory, 'secret')) as directory, 
+                                                         p.created_at", 
+                                                 "post p left join users as u on p.user_id = u.id 
+                                                         left join post_images as pi on p.post_id = pi.post_id 
+                                                         WHERE p.post_id < :LAST_ID 
+                                                         group by p.post_id 
+                                                         order by p.created_at desc", 
+                                             "LIMIT $limit", 
+                                       [":LAST_ID" => $last_id], 
+                                              true);
+
+      if(!$posts){
+        return json_encode(["status" => "error", 
+                                  "message" => "no posts found"]);
+      }
+
+      $last_id = end($posts)["post_id"];
+
+      return json_encode(["status" => "success", 
+                                 "posts" => $posts,
+                                 "last_id" => $last_id]);
+
+    }
+
+    public function getrecentposts(){
+      $limit = 3;
+
+      $posts = select_query($this->pdo, "p.post_id, 
+                                                         p.user_id, 
+                                                         aes_decrypt(u.profile_image, 'secret') as profile_image, 
+                                                         aes_decrypt(u.fname, 'secret') as fname, 
+                                                         aes_decrypt(u.lname, 'secret') as lname, 
+                                                         aes_decrypt(p.content, 'secret') as content , 
+                                                         group_concat(aes_decrypt(pi.directory, 'secret')) as directory, 
+                                                         p.created_at", 
+                                                 "post p left join users as u on p.user_id = u.id 
+                                                         left join post_images as pi on p.post_id = pi.post_id 
+                                                         group by p.post_id 
+                                                         order by p.created_at desc", 
+                                             "LIMIT $limit", 
+                                       [], 
+                                              true);
+
+      if(!$posts){
+        return json_encode(["status" => "error", 
+                                 "message" => "no posts found"]);
+      }
+
+      $last_id = end($posts)["post_id"];
+
+      return json_encode(["status" => "success", 
+                                 "posts" => $posts,
+                                 "last_id" => $last_id]);
+
+    }
+
+
   }
 
 

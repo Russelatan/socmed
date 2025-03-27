@@ -6,7 +6,7 @@
 body {
 	height: 100vh;
 	width: 100%;
-	background-image: linear-gradient(
+	/* background-image: linear-gradient(
 		to right top,
 		#c0debd,
 		#cbd4af,
@@ -20,14 +20,16 @@ body {
 		#b9bfde,
 		#a9c8e3,
 		#9dd0e0
-	);
+	); */
+
+	background-color: #747474;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 }
 form {
 	height: 500px;
-	width: 350px;
+	width: 400px;
 	border: 1px solid rgb(247, 237, 237);
 	display: flex;
 	flex-direction: column;

@@ -1,41 +1,158 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const postForm = document.querySelector(".post-form");
+	const postForm = document.querySelector(".post-form");
+  const mainNewsfeed = document.querySelector(".main-newsfeed");
+  const mainReadPost = document.querySelector(".main-read-post");
 
-  async function create_post(e) {
-    e.preventDefault();
-    const formdata = new FormData(postForm);
+  let page = 1;
+  let isFetching = false;
+  let last_fetched_id = 0;
 
-    const response = await fetch("../routes.php", {
-      method: "POST",
-      body: formdata,
-    });
+	async function create_post(e) {
+		e.preventDefault();
+		const formdata = new FormData(postForm);
 
-    const data = await response.json();
+		const response = await fetch("../routes.php", {
+			method: "POST",
+			body: formdata,
+		});
 
-    if (data.status === "success") {
+		const data = await response.json();
+
+		if (data.status === "success") {
+      page = 1;
+      last_fetched_id = 0;
+      mainNewsfeed.innerHTML = ``;
+      view_post();
+			swal({
+				title: "Success!",
+				text: data.message,
+				icon: "success",
+				button: "OK",
+			});
+
+			console.log(data.status, data.message);
+		} else {
+			swal({
+				title: "Error!",
+				text: data.message,
+				icon: "error",
+				button: "Try Again",
+			});
+			console.log(data.status, data.message);
+		}
+	}
+
+  async function view_post(){
+    console.log("ISFETCHING:", isFetching)
+    if (isFetching) return;
+    isFetching = true;
+    const formData = new FormData();
+    formData.append("action", "read_post");
+    formData.append("last_id", last_fetched_id);
+
+
+		const response = await fetch("../routes.php", {
+			method: "POST",
+      body: formData,
+		});
+
+		const data = await response.json();
+    
+
+		if (data.status === "success") {
+			console.log(data.posts)
+      isFetching = false;
+
+      last_fetched_id = data.posts[data.posts.length-1].post_id;
+      console.log("last_id:", last_fetched_id)
+      const posts = data.posts;
+
+      if (data.posts.length !== 0){
+        console.log("page:", page)
+        page++;
+      }
       
-      swal({
-        title: "Success!",
-        text: data.message,
-        icon: "success",
-        button: "OK",
+      posts.forEach( (post) => {
+        
+        const post_newsfeed = document.createElement("div");
+        post_newsfeed.classList.add("post-newsfeed");
+
+        const container_info_user = document.createElement("div");
+        container_info_user.classList.add("container-info-user");
+
+        const contact_image = document.createElement("img");
+        contact_image.classList.add("contact-img");
+        contact_image.alt = "post profile";
+        contact_image.src = "../" + post.profile_image;
+        container_info_user.appendChild(contact_image);
+
+        const h1 = document.createElement("h1");
+        h1.textContent = post.fname + post.lname;
+        container_info_user.appendChild(h1);
+
+        const p = document.createElement("p");
+        p.textContent = post.created_at;
+        container_info_user.appendChild(p);
+
+        const container_info_post = document.createElement("div");
+        container_info_post.classList.add("container-info-post");
+
+        const content = document.createElement("p");
+        content.textContent = post.content;
+        container_info_post.appendChild(content);
+
+        const container_image_post = document.createElement("div");
+        container_image_post.classList.add("container-image-post");
+
+        if (post.directory !== null){
+          post.directory = post.directory.split(",")
+          post.directory.forEach((imageUrl) => {
+            const img = document.createElement("img");
+            img.classList.add("post-image");
+            img.src = "../" + imageUrl;
+            img.alt = "post image";
+            container_image_post.appendChild(img);
+            container_info_post.appendChild(container_image_post);
+          })
+          
+        }
+
+        post_newsfeed.appendChild(container_info_user);
+        post_newsfeed.appendChild(container_info_post);
+        mainNewsfeed.append(post_newsfeed);
+
+        
+
+        
       });
 
-      console.log(data.status, data.message);
-    } else {
-      swal({
-        title: "Error!",
-        text: data.message,
-        icon: "error",
-        button: "Try Again",
-      });
-      console.log(data.status, data.message);
-    }
+			console.log(data.status, data.message);
+		} 
+    // else {
+		// 	swal({
+		// 		title: "Error!",
+		// 		text: data.message,
+		// 		icon: "error",
+		// 		button: "Try Again",
+		// 	});
+		// 	console.log(data.status, data.message);
+		// }
+    
+    
   }
 
   
 
-  
-  postForm.addEventListener("submit", create_post);
+	postForm.addEventListener("submit", create_post);
+  mainNewsfeed.addEventListener("scroll",() => {
+    console.log(isFetching)
 
+    // console.log(mainNewsfeed.scrollTop + mainNewsfeed.clientHeight, mainNewsfeed.scrollHeight - 10, isFetching)
+    if(!isFetching && mainNewsfeed.scrollTop + mainNewsfeed.clientHeight >= mainNewsfeed.scrollHeight - 10){
+      view_post();
+      console.log(isFetching)
+    };
+  })
+
+  view_post();
 });

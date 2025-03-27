@@ -42,11 +42,17 @@
   $pdo->exec($createtablepost_images);
 
 
-  function select_query($pdo, $parameter, $table, $condition, $condition_input){
+  function select_query($pdo, $parameter, $table, $condition, $condition_input, $fetchall){
     $query = "select $parameter from $table $condition";
     $stmt = $pdo->prepare($query);
     $stmt->execute($condition_input);
-    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    if (!$fetchall){
+      $result = $stmt->fetch(PDO::FETCH_ASSOC);
+      return $result;
+    }
+
+    $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
     return $result;
   }
 

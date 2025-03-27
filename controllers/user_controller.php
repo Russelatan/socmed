@@ -13,11 +13,12 @@ class UserController {
   public function registerUser($fname, $lname, $birthdate, $email, $username, $password, $confirmpass){
     
     $check_user_exist = select_query($this->pdo, 
-                                "username", 
-                                "users", 
-                                "where username = :username OR email = AES_ENCRYPT(:email, 'secret')", 
-                                [":username" => $username,
-                                                  ":email" => $email]);
+                               "username", 
+                                   "users", 
+                               "where username = :username OR email = AES_ENCRYPT(:email, 'secret')", 
+                         [":username" => $username,
+                                           ":email" => $email],
+                                false);
 
     if ($check_user_exist){
       return json_encode(["status" => "error",

@@ -19,7 +19,7 @@
       insert_query($pdo, "users", 
                           "profile_image, fname, lname, birthdate, email, username, password",
                         "AES_ENCRYPT(:profile_image, :key), AES_ENCRYPT(:fname, :key), AES_ENCRYPT(:lname, :key), AES_ENCRYPT(:birthdate, :key), AES_ENCRYPT(:email, :key), :username, :password",
-                        [":profile_image" => "assets/default.webp",
+                        [":profile_image" => "assets/profile_pics/default.webp",
                                         ":fname" => $fname,
                                         ":lname" => $lname,
                                         ":birthdate" => $birthdate,
@@ -38,11 +38,12 @@
       $key = $this->key;
       $check_user_exist = select_query($pdo, 
                                 "id, AES_DECRYPT(profile_image, :key), AES_DECRYPT(fname, :key), AES_DECRYPT(lname, :key), AES_DECRYPT(email, :key), password", 
-                                "users", 
+                                    "users", 
                                 "where username = :username OR email = AES_ENCRYPT(:email, 'secret')", 
-                                [":username" => $username,
-                                                  ":email" => $username,
-                                                  ":key" => $key]);
+                          [":username" => $username,
+                                            ":email" => $username,
+                                            ":key" => $key],
+                                 false);
 
       if (!$check_user_exist){
         return json_encode(["status" => "error",
@@ -50,7 +51,6 @@
       }
 
       if ($check_user_exist && !password_verify($password, $check_user_exist["password"])){
-        $_SESSION["user"] = $check_user_exist;
         return json_encode(["status" => "error",
                                     "message" => "Invalid Username or Password!"]);
       }
