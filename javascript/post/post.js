@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
 	const postForm = document.querySelector(".post-form");
-  const mainNewsfeed = document.querySelector(".main-newsfeed");
+  const mainPostsContainer = document.querySelector(".main-posts-container");
   const mainReadPost = document.querySelector(".main-read-post");
 
   let page = 1;
@@ -21,7 +21,8 @@ document.addEventListener("DOMContentLoaded", () => {
 		if (data.status === "success") {
       page = 1;
       last_fetched_id = 0;
-      mainNewsfeed.innerHTML = ``;
+      isFetching = false;
+      mainPostsContainer.innerHTML = ``;
       view_post();
 			swal({
 				title: "Success!",
@@ -62,7 +63,8 @@ document.addEventListener("DOMContentLoaded", () => {
 		if (data.status === "success") {
 			console.log(data.posts)
       isFetching = false;
-
+      console.log("ISFETCHING:", isFetching)
+      
       last_fetched_id = data.posts[data.posts.length-1].post_id;
       console.log("last_id:", last_fetched_id)
       const posts = data.posts;
@@ -119,7 +121,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         post_newsfeed.appendChild(container_info_user);
         post_newsfeed.appendChild(container_info_post);
-        mainNewsfeed.append(post_newsfeed);
+        mainPostsContainer.append(post_newsfeed);
 
         
 
@@ -144,11 +146,11 @@ document.addEventListener("DOMContentLoaded", () => {
   
 
 	postForm.addEventListener("submit", create_post);
-  mainNewsfeed.addEventListener("scroll",() => {
+  mainPostsContainer.addEventListener("scroll",() => {
     console.log(isFetching)
 
-    // console.log(mainNewsfeed.scrollTop + mainNewsfeed.clientHeight, mainNewsfeed.scrollHeight - 10, isFetching)
-    if(!isFetching && mainNewsfeed.scrollTop + mainNewsfeed.clientHeight >= mainNewsfeed.scrollHeight - 10){
+    // console.log(mainPostsContainer.scrollTop + mainPostsContainer.clientHeight, mainPostsContainer.scrollHeight - 10, isFetching)
+    if(!isFetching && mainPostsContainer.scrollTop + mainPostsContainer.clientHeight >= mainPostsContainer.scrollHeight - 10){
       view_post();
       console.log(isFetching)
     };

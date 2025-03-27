@@ -38,17 +38,23 @@
 
       </aside>
       <section class="main-newsfeed main-content">
-        <form class="post-form" action="" enctype="multipart/form-data">
-          <input type="hidden" name="action" value="create_post">
-          <input type="hidden" name="user_id" value=<?php echo $_SESSION["user"]["id"]?>>
-          <input type="text" name="content" placeholder="Post something. . ." value="">
-          <input type="file" name="post_image[]" multiple value="">
-          <input type="submit" value="Submit Post">
-        </form>
+        <div class="main-post-form-container">
+          <form class="post-form" action="" enctype="multipart/form-data">
+            <input type="hidden" name="action" value="create_post">
+            <input type="hidden" name="user_id" value=<?php echo $_SESSION["user"]["id"]?>>
+            <input type="text" name="content" placeholder="Post something. . ." value="">
+            <input type="file" name="post_image[]" multiple value="">
+            <input type="submit" value="Submit Post">
+          </form>
 
-        <form action="" class="main-read-post">
-          <input type="hidden" name="action" value="read_post">
-        </form>
+          <form action="" class="main-read-post">
+            <input type="hidden" name="action" value="read_post">
+          </form>
+        </div>
+
+        <div class="main-posts-container">
+          
+        </div>
 
 
         <!-- <div class="post-newsfeed">

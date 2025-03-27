@@ -41,6 +41,7 @@ main {
 	background-color: whitesmoke;
 	margin-top: 8vh;
 	justify-content: space-between;
+	overflow-y: hidden;
 }
 .main-content {
 	height: 100%;
@@ -49,13 +50,18 @@ main {
 	display: flex;
 	flex-direction: column;
 }
+
 .main-newsfeed {
 	width: 40%;
+}
+.main-posts-container {
+	width: 100%;
+	height: 100%;
 	overflow-y: auto;
 	overflow-x: hidden;
 }
 
-.main-newsfeed::-webkit-scrollbar {
+.main-posts-container::-webkit-scrollbar {
 	scroll-behavior: smooth;
 	scrollbar-width: 0;
 }
