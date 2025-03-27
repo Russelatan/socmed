@@ -15,7 +15,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="../assets/home.css?v=1.0.1">
+  <link rel="stylesheet" href="../assets/home.css?v=1.0.3">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
   <title>Document</title>
 </head>
 <body>
@@ -25,7 +26,7 @@
   ?>
   <main>
       <aside class="aside-home main-content">
-        <div class="container-contact">
+        <!-- <div class="container-contact">
           <img src="../assets/profile_pics/default.webp" alt="profile-img" class="contact-img">
           <h1>Iquen Marba</h1>
           <p>Active now</p>
@@ -34,23 +35,33 @@
           <img src="../assets/profile_pics/default.webp" alt="profile-img" class="contact-img">
           <h1>Iquen Marba</h1>
           <p>Active now</p>
-        </div>
+        </div> -->
+        <a href="" class="aside-navs">Home</a>
+        <a href="" class="aside-navs">Message</a>
+        <a href="" class="aside-navs">notifications</a>
+        <a href="" class="aside-navs">Settings</a>
+        <a href="" class="aside-navs">Report</a>
+        <a href="" class="aside-navs">Display</a>
+        <a href="" class="aside-navs">Report</a>
 
       </aside>
       <section class="main-newsfeed main-content">
-        <div class="main-post-form-container">
           <form class="post-form" action="" enctype="multipart/form-data">
             <input type="hidden" name="action" value="create_post">
             <input type="hidden" name="user_id" value=<?php echo $_SESSION["user"]["id"]?>>
-            <input type="text" name="content" placeholder="Post something. . ." value="">
-            <input type="file" name="post_image[]" multiple value="">
-            <input type="submit" value="Submit Post">
+            <input type="text" name="content" placeholder="Post something. . ." value="" class="input post">
+            <!-- <input type="file" name="post_image[]" multiple value=""> -->
+            <label for="file-upload" class="file-label">
+              <i class="fa fa-image"></i>
+            </label>
+            <input type="file" id="file-upload" name="post_image[]" multiple class="file-input">
+            <input type="submit" value="Submit Post" class="header-btn submit-post">
+
           </form>
 
           <form action="" class="main-read-post">
             <input type="hidden" name="action" value="read_post">
           </form>
-        </div>
 
         <div class="main-posts-container">
           
@@ -77,6 +88,26 @@
       </section>
       <aside class="contact-section main-content">
       <div class="container-contact">
+          <img src="../assets/profile_pics/default.webp" alt="profile-img" class="contact-img">
+          <h1>Iquen Marba</h1>
+          <p>Active now</p>
+        </div>
+        <div class="container-contact">
+          <img src="../assets/profile_pics/default.webp" alt="profile-img" class="contact-img">
+          <h1>Iquen Marba</h1>
+          <p>Active now</p>
+        </div>
+        <div class="container-contact">
+          <img src="../assets/profile_pics/default.webp" alt="profile-img" class="contact-img">
+          <h1>Iquen Marba</h1>
+          <p>Active now</p>
+        </div>
+        <div class="container-contact">
+          <img src="../assets/profile_pics/default.webp" alt="profile-img" class="contact-img">
+          <h1>Iquen Marba</h1>
+          <p>Active now</p>
+        </div>
+        <div class="container-contact">
           <img src="../assets/profile_pics/default.webp" alt="profile-img" class="contact-img">
           <h1>Iquen Marba</h1>
           <p>Active now</p>
