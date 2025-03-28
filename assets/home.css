@@ -262,6 +262,7 @@ a {
 	box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
 	/* box-shadow: inset 2px 5px 10px rgba(0, 0, 0, 0.3); */
 	transition: 300ms ease-in-out;
+	color: var(--rus-color);
 }
 
 .input:focus {
