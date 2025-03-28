@@ -36,13 +36,13 @@
           <h1>Iquen Marba</h1>
           <p>Active now</p>
         </div> -->
-        <a href="" class="aside-navs">Home</a>
-        <a href="" class="aside-navs">Message</a>
-        <a href="" class="aside-navs">notifications</a>
-        <a href="" class="aside-navs">Settings</a>
-        <a href="" class="aside-navs">Report</a>
-        <a href="" class="aside-navs">Display</a>
-        <a href="" class="aside-navs">Report</a>
+        <a href="" class="aside-navs"><i class="fa-solid fa-house"></i> Home</a>
+        <a href="" class="aside-navs"><i class="fa-solid fa-envelope"></i> Message</a>
+        <a href="" class="aside-navs"><i class="fa-solid fa-bell"></i> Notifications</a>
+        <a href="" class="aside-navs"><i class="fa-solid fa-gear"></i> Settings</a>
+        <a href="" class="aside-navs"><i class="fa-solid fa-flag"></i> Report</a>
+        <a href="" class="aside-navs"><i class="fa-solid fa-desktop"></i> Display</a>
+        <a href="" class="aside-navs"><i class="fa-solid fa-flag"></i> Report</a>
 
       </aside>
       <section class="main-newsfeed main-content">
@@ -90,28 +90,34 @@
       <div class="container-contact">
           <img src="../assets/profile_pics/default.webp" alt="profile-img" class="contact-img">
           <h1>Iquen Marba</h1>
-          <p>Active now</p>
+          <p class="active-text">Active now</p>
         </div>
         <div class="container-contact">
           <img src="../assets/profile_pics/default.webp" alt="profile-img" class="contact-img">
           <h1>Iquen Marba</h1>
-          <p>Active now</p>
+          <p class="active-text">Active now</p>
         </div>
         <div class="container-contact">
           <img src="../assets/profile_pics/default.webp" alt="profile-img" class="contact-img">
           <h1>Iquen Marba</h1>
-          <p>Active now</p>
+          <p class="active-text">Active now</p>
         </div>
         <div class="container-contact">
           <img src="../assets/profile_pics/default.webp" alt="profile-img" class="contact-img">
           <h1>Iquen Marba</h1>
-          <p>Active now</p>
+          <p class="active-text">Active now</p>
         </div>
         <div class="container-contact">
           <img src="../assets/profile_pics/default.webp" alt="profile-img" class="contact-img">
           <h1>Iquen Marba</h1>
-          <p>Active now</p>
+          <p class="active-text">Active now</p>
         </div>
+        <div class="container-contact">
+          <img src="../assets/profile_pics/default.webp" alt="profile-img" class="contact-img">
+          <h1>Iquen Marba</h1>
+          <p class="active-text">Active now</p>
+        </div>
+        
       </aside>
   </main>
 </body>
