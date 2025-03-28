@@ -101,7 +101,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const content = document.createElement("p");
         content.textContent = post.content;
-        container_info_post.appendChild(content);
+        
+
+        const content_container = document.createElement("div");
+        content_container.classList.add("post-content-container")
+        content_container.appendChild(content);
+
+        container_info_post.appendChild(content_container)
+
+        
 
         const container_image_post = document.createElement("div");
         container_image_post.classList.add("container-image-post");
