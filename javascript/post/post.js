@@ -75,22 +75,28 @@ document.addEventListener("DOMContentLoaded", () => {
       }
       
       posts.forEach( (post) => {
-        
+        console.log("post_id:",post.post_id)
         const post_newsfeed = document.createElement("div");
         post_newsfeed.classList.add("post-newsfeed");
 
         const container_info_user = document.createElement("div");
         container_info_user.classList.add("container-info-user");
 
+        
+
+        const profile_url = document.createElement("a");
+        profile_url.href = `../../view_template/user_profile.php?id=${post.user_id}`;
+        container_info_user.appendChild(profile_url);
+
         const contact_image = document.createElement("img");
         contact_image.classList.add("contact-img");
         contact_image.alt = "post profile";
         contact_image.src = "../" + post.profile_image;
-        container_info_user.appendChild(contact_image);
+        profile_url.appendChild(contact_image);
 
         const h1 = document.createElement("h1");
         h1.textContent = post.fname + post.lname;
-        container_info_user.appendChild(h1);
+        profile_url.appendChild(h1);
 
         const p = document.createElement("p");
         p.textContent = post.created_at;
@@ -98,6 +104,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const container_info_post = document.createElement("div");
         container_info_post.classList.add("container-info-post");
+
+        const post_url = document.createElement("a");
+        post_url.href = `../../view_template/user_post.php?id=${post.post_id}`;
+        post_url.appendChild(container_info_post);
 
         const content = document.createElement("p");
         content.textContent = post.content;
@@ -128,7 +138,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         post_newsfeed.appendChild(container_info_user);
-        post_newsfeed.appendChild(container_info_post);
+        post_newsfeed.appendChild(post_url);
         mainPostsContainer.append(post_newsfeed);
 
         

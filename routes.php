@@ -29,7 +29,18 @@
     if($_POST["action"] === "login"){
       $username = $_POST["username"];
       $password = $_POST["password"];
-      echo $controller->loginUser($username, $password);
+
+      $result = $controller->loginUser($username, $password);
+      
+      
+      if (isset($result["user"])){
+        $user = $result["user"];
+        $_SESSION["user"] = $user;
+      }
+      
+      
+      echo json_encode(["status" => $result["status"],
+                               "message" => $result["message"]]);
       exit;
     }
 

@@ -1,8 +1,10 @@
 <header>
   <section class="header-section logo-section">
-    <h1 class="logo">
-      LOGO
-    </h1>
+    <a href="/views/home.php">
+      <h1 class="logo">
+        LOGO
+      </h1>
+    </a>
   </section>
   <section class="header-section search-section">
     <form action="" class="header-forms">
@@ -14,7 +16,6 @@
     <form action="" class="logout-form header-forms">
       <input type="hidden" name="action" value="logout">
       <a href="#" id="profilebtn" class="header-btn">Profile</a>
-
       <input type="submit" value="Log Out" class="header-btn" id="logoutbtn">
     </form>
   </section>

@@ -85,11 +85,11 @@
                                                          group_concat(aes_decrypt(pi.directory, 'secret')) as directory, 
                                                          p.created_at", 
                                                  "post p left join users as u on p.user_id = u.id 
-                                                         left join post_images as pi on p.post_id = pi.post_id 
-                                                         WHERE p.post_id < :LAST_ID 
+                                                         left join post_images as pi on p.post_id = pi.post_id", 
+                                             "WHERE p.post_id < :LAST_ID 
                                                          group by p.post_id 
-                                                         order by p.created_at desc", 
-                                             "LIMIT $limit", 
+                                                         order by p.created_at desc
+                                                         LIMIT $limit", 
                                        [":LAST_ID" => $last_id], 
                                               true);
 
@@ -136,6 +136,34 @@
                                  "posts" => $posts,
                                  "last_id" => $last_id]);
 
+    }
+
+    public function getpost($post_id){
+
+      $post = select_query($this->pdo, "p.post_id, 
+                                                        p.user_id, 
+                                                        aes_decrypt(u.profile_image, 'secret') as profile_image,
+                                                        AES_DECRYPT(u.fname, 'secret') as fname, 
+                                                        AES_DECRYPT(u.lname, 'secret') as lname, 
+                                                        AES_DECRYPT(p.content, 'secret') as content, 
+                                                        group_concat(AES_DECRYPT(pi.directory, 'secret')) as directory, 
+                                                        p.created_at",
+                                                "post p left join users as u on p.user_id = u.id
+                                                        left join post_images as pi on p.post_id = pi.post_id",
+                                            "WHERE p.post_id = :post_id 
+                                                        group by p.post_id",
+                                      [":post_id" => $post_id],
+                                             false);
+
+      if (!$post){
+        return ["status" => "error",
+                "message" => "Content not Available"];
+      }
+
+      return ["status" => "success",
+              "message" => "post retrieved",
+              "post" => $post];
+      
     }
 
 

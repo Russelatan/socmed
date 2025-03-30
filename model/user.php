@@ -46,19 +46,20 @@
                                  false);
 
       if (!$check_user_exist){
-        return json_encode(["status" => "error",
-                                    "message" => "Invalid Username or Password!"]);
+        return ["status" => "error",
+                "message" => "Invalid Username or Password!"];
       }
 
       if ($check_user_exist && !password_verify($password, $check_user_exist["password"])){
-        return json_encode(["status" => "error",
-                                    "message" => "Invalid Username or Password!"]);
+        return ["status" => "error",
+                "message" => "Invalid Username or Password!"];
       }
       $user = $check_user_exist;
       
-      $_SESSION["user"] = $user;
       
-      return json_encode(["status" => "success"]);
+      return ["status" => "success",
+              "message" => "logged in",
+              "user" => $user];
     }
 
   }
