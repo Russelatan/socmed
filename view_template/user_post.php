@@ -3,15 +3,9 @@
   require "../db/db.php";
 
   $post_id = $_GET["id"];
-
   $postModel = new Post($pdo, $key);
-
   $result = $postModel->getpost($post_id);
-
   $post = $result["post"];
-
-  
-
 
 ?>
 <!DOCTYPE html>
@@ -61,7 +55,7 @@
         echo "</div>";
       }
               
-      echo  "</div>";
+      echo "</div>";
       echo "</div>";
     ?>
   </main>
@@ -70,7 +64,6 @@
   document.addEventListener("DOMContentLoaded", () => {
 
     const logoutForm = document.querySelector(".logout-form");
-
     async function logout(e) {
       e.preventDefault();
       const formdata = new FormData(logoutForm);

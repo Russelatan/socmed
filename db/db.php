@@ -1,14 +1,30 @@
 <?php 
-
+  //local
   $host = "localhost";
   $username = "root";
   $password = "";
   $key = "secret";
 
+  //cloud TiDB
+  $host = "gateway01.us-east-1.prod.aws.tidbcloud.com";
+  $port = "4000";
+  $user = "24cBdCGkjiuLeVo.root";
+  $pass = "meGBcVOi7jWEpn8n";
+
+  $ssl_ca = __DIR__ . '/../isrgrootx1.pem'; // adjust as needed
+
+  $options = [
+      PDO::MYSQL_ATTR_SSL_CA => $ssl_ca,
+      PDO::MYSQL_ATTR_SSL_VERIFY_SERVER_CERT => false, // optional: disables strict server cert checking
+  ];
+
+  $dsn = 'mysql:host=gateway01.us-east-1.prod.aws.tidbcloud.com;port=$port';
+
   $charset = "utf8mb4";
 
   
-  $pdo = new PDO("mysql:host=$host", $username, $password);
+  // $pdo = new PDO("mysql:host=$host", $username, $password);
+  $pdo = new PDO($dsn, $user, $pass, $options);
   $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 
