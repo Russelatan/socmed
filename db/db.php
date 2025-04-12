@@ -8,8 +8,8 @@
   //cloud TiDB
   $host = "gateway01.us-east-1.prod.aws.tidbcloud.com";
   $port = "4000";
-  $user = "24cBdCGkjiuLeVo.root";
-  $pass = "meGBcVOi7jWEpn8n";
+  $user = "4Rr4irk2qVbPgyx.root";
+  $pass = "Z6vp68MkfT8tUhUQ";
 
   $ssl_ca = __DIR__ . '/../isrgrootx1.pem'; // adjust as needed
 
@@ -18,7 +18,7 @@
       PDO::MYSQL_ATTR_SSL_VERIFY_SERVER_CERT => false, // optional: disables strict server cert checking
   ];
 
-  $dsn = 'mysql:host=gateway01.us-east-1.prod.aws.tidbcloud.com;port=$port';
+  $dsn = "mysql:host=$host;dbname=socmed;port=$port";
 
   $charset = "utf8mb4";
 
@@ -51,8 +51,8 @@
                                                               directory varbinary(255),
                                                               created_at datetime default current_timestamp,
                                                               updated_at datetime default current_timestamp on update current_timestamp)";
-  $pdo->exec($createdb);
-  $pdo->exec("use socmed");
+  // $pdo->exec($createdb);
+  // $pdo->exec("use socmed");
   $pdo->exec($createtableuser);
   $pdo->exec($createtablepost);
   $pdo->exec($createtablepost_images);

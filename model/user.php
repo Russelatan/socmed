@@ -47,7 +47,7 @@
 
       if (!$check_user_exist){
         return ["status" => "error",
-                "message" => "Invalid Username or Password!". $username];
+                "message" => "Invalid Username or Password!"];
       }
 
       if ($check_user_exist && !password_verify($password, $check_user_exist["password"])){

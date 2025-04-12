@@ -78,16 +78,16 @@
 
       $posts = select_query($this->pdo, "p.post_id, 
                                                          p.user_id, 
-                                                         aes_decrypt(u.profile_image, 'secret') as profile_image, 
-                                                         aes_decrypt(u.fname, 'secret') as fname, 
-                                                         aes_decrypt(u.lname, 'secret') as lname, 
-                                                         aes_decrypt(p.content, 'secret') as content , 
+                                                         MIN(aes_decrypt(u.profile_image, 'secret')) as profile_image, 
+                                                         MIN(aes_decrypt(u.fname, 'secret')) as fname, 
+                                                         MIN(aes_decrypt(u.lname, 'secret')) as lname, 
+                                                         MIN(aes_decrypt(p.content, 'secret')) as content , 
                                                          group_concat(aes_decrypt(pi.directory, 'secret')) as directory, 
                                                          p.created_at", 
                                                  "post p left join users as u on p.user_id = u.id 
                                                          left join post_images as pi on p.post_id = pi.post_id", 
                                              "WHERE p.post_id < :LAST_ID 
-                                                         group by p.post_id 
+                                                         group by p.post_id, p.user_id, p.created_at 
                                                          order by p.created_at desc
                                                          LIMIT $limit", 
                                        [":LAST_ID" => $last_id], 
@@ -111,15 +111,15 @@
 
       $posts = select_query($this->pdo, "p.post_id, 
                                                          p.user_id, 
-                                                         aes_decrypt(u.profile_image, 'secret') as profile_image, 
-                                                         aes_decrypt(u.fname, 'secret') as fname, 
-                                                         aes_decrypt(u.lname, 'secret') as lname, 
-                                                         aes_decrypt(p.content, 'secret') as content , 
+                                                         MIN(aes_decrypt(u.profile_image, 'secret')) as profile_image, 
+                                                         MIN(aes_decrypt(u.fname, 'secret')) as fname, 
+                                                         MIN(aes_decrypt(u.lname, 'secret')) as lname, 
+                                                         MIN(aes_decrypt(p.content, 'secret')) as content , 
                                                          group_concat(aes_decrypt(pi.directory, 'secret')) as directory, 
                                                          p.created_at", 
                                                  "post p left join users as u on p.user_id = u.id 
                                                          left join post_images as pi on p.post_id = pi.post_id 
-                                                         group by p.post_id 
+                                                         group by p.post_id, p.user_id, p.created_at 
                                                          order by p.created_at desc", 
                                              "LIMIT $limit", 
                                        [], 
